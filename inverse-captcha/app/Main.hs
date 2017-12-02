@@ -6,6 +6,10 @@ import Lib
 
 main :: IO ()
 main = do
-  [input] <- getArgs
-  let result = computeInverseCaptcha ( fmap digitToInt input )
+  [flag, input'] <- getArgs
+  let input = fmap digitToInt input'
+      result = case flag of
+        "1" -> computeInverseCaptcha input
+        "2" -> computeJumpingSum input
+        _   -> error "unrecognized flag"
   print result

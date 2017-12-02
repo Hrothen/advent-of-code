@@ -1,5 +1,6 @@
 module Lib
     ( computeInverseCaptcha
+    , computeJumpingSum
     ) where
 
 import Data.List ( cycle )
@@ -18,3 +19,9 @@ sumPairs (x:y:ls) = s + sumPairs (y:ls)
   s = if x == y
         then x
         else 0
+
+computeJumpingSum :: [Int] -> Int
+computeJumpingSum ints = sum (take len (zipWith (\x y -> if x == y then x else 0) ints' (drop (len `div` 2) ints')))
+  where
+    len   = length ints
+    ints' = cycle ints
