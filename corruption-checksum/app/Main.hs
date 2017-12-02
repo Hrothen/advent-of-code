@@ -31,7 +31,7 @@ check (Input p s) = do
   spreadSheet <- readSpreadsheet s
   case p of
     One -> print $ checksum spreadSheet
-    Two -> error "unimplemented"
+    Two -> print $ checksumMod spreadSheet
 
 readSpreadsheet :: String -> IO [[Integer]]
 readSpreadsheet filename = do
